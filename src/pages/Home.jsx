@@ -20,7 +20,7 @@ const stats = [
   { value: '6',    label: 'Branches covered' },
   { value: '13+',  label: 'Feature sections' },
   { value: '100%', label: 'Free forever' },
-  { value: '0',    label: 'BS, only facts' },
+  { value: '∞',   label: 'Resources growing' },
 ]
 
 export default function Home() {
