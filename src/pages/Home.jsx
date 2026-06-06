@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, BookOpen, Map, Target, Lightbulb, Trophy, PlaySquare, Search, Users, Calendar, GraduationCap, Briefcase, GitBranch, User } from 'lucide-react'
+import { ArrowRight, BookOpen, Map, Target, Lightbulb, Trophy, PlaySquare, Search, Users, Calendar, GraduationCap, Briefcase, GitBranchIcon, User } from 'lucide-react'
 
 const features = [
   { icon: BookOpen,    label: 'Resources',    desc: 'PYQs, Notes, Syllabus',         path: '/resources',    color: '#f0ad34' },
@@ -13,7 +13,7 @@ const features = [
   { icon: Calendar,    label: 'MSBTE Dates',  desc: 'Exam & deadline calendar',       path: '/msbte',        color: '#f0ad34' },
   { icon: GraduationCap, label: 'Scholarships', desc: 'EBC, SC/ST, OBC guides',      path: '/scholarships', color: '#c084fc' },
   { icon: Briefcase,   label: 'Placement',    desc: 'Resume & interview prep',        path: '/placement',    color: '#4ade80' },
-  { icon: Github,      label: 'Open Source',  desc: 'Contribute to real projects',    path: '/opensource',   color: '#94a3b8' },
+  { icon: GitBranchIcon,      label: 'Open Source',  desc: 'Contribute to real projects',    path: '/opensource',   color: '#94a3b8' },
 ]
 
 const stats = [
@@ -138,7 +138,7 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a href="https://github.com/piush365/Diploma-Dost" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ fontSize: '0.85rem' }}>
-              <GitBranch size={15} /> View on GitHub
+              <GitBranchIcon size={15} /> View on GitHub
             </a>
             <Link to="/about" className="btn-ghost" style={{ fontSize: '0.85rem' }}>
               <User size={15} /> About the project
