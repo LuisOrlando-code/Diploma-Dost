@@ -1,151 +1,436 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, BookOpen, Map, Target, Lightbulb, Trophy, PlaySquare, Search, Users, Calendar, GraduationCap, Briefcase, GitBranchIcon, User } from 'lucide-react'
+import {
+  ArrowRight, BookOpen, Map, Target, Lightbulb,
+  Trophy, PlaySquare, Search, Users, Calendar,
+  GraduationCap, Briefcase, GitBranchIcon
+} from 'lucide-react'
 
 const features = [
-  { icon: BookOpen,    label: 'Resources',    desc: 'PYQs, Notes, Syllabus',         path: '/resources',    color: '#f0ad34' },
-  { icon: Map,         label: 'Roadmaps',     desc: 'Career paths for CS/IT',         path: '/roadmaps',     color: '#4ade80' },
-  { icon: Target,      label: 'Predictor',    desc: 'College admission prediction',   path: '/predictor',    color: '#f87171' },
-  { icon: Lightbulb,   label: 'Projects',     desc: 'ITR, Capstone & micro ideas',    path: '/projects',     color: '#a78bfa' },
-  { icon: Trophy,      label: 'DSA & CP',     desc: 'LeetCode, Striver, GFG',        path: '/dsa',          color: '#fb923c' },
-  { icon: PlaySquare,  label: 'YouTube Hub',  desc: 'Best playlists Sem 1–6',         path: '/youtube',      color: '#f43f5e' },
-  { icon: Search,      label: 'Internships',  desc: 'Find & apply guide',             path: '/internships',  color: '#38bdf8' },
-  { icon: Users,       label: 'Community',    desc: 'Ask seniors, get answers',       path: '/community',    color: '#34d399' },
-  { icon: Calendar,    label: 'MSBTE Dates',  desc: 'Exam & deadline calendar',       path: '/msbte',        color: '#f0ad34' },
-  { icon: GraduationCap, label: 'Scholarships', desc: 'EBC, SC/ST, OBC guides',      path: '/scholarships', color: '#c084fc' },
-  { icon: Briefcase,   label: 'Placement',    desc: 'Resume & interview prep',        path: '/placement',    color: '#4ade80' },
-  { icon: GitBranchIcon,      label: 'Open Source',  desc: 'Contribute to real projects',    path: '/opensource',   color: '#94a3b8' },
+  { icon: BookOpen,      label: 'Resources',    desc: 'PYQs, Notes, Syllabus',          path: '/resources',    },
+  { icon: Map,           label: 'Roadmaps',     desc: 'Career paths for CS/IT',          path: '/roadmaps',     },
+  { icon: Target,        label: 'Predictor',    desc: 'College admission prediction',    path: '/predictor',    },
+  { icon: Lightbulb,     label: 'Projects',     desc: 'ITR, Capstone & micro ideas',     path: '/projects',     },
+  { icon: Trophy,        label: 'DSA & CP',     desc: 'LeetCode, Striver, GFG',         path: '/dsa',          },
+  { icon: PlaySquare,    label: 'YouTube Hub',  desc: 'Best playlists Sem 1–6',          path: '/youtube',      },
+  { icon: Search,        label: 'Internships',  desc: 'Find & apply guide',              path: '/internships',  },
+  { icon: Users,         label: 'Community',    desc: 'Ask seniors, get answers',        path: '/community',    },
+  { icon: Calendar,      label: 'MSBTE Dates',  desc: 'Exam & deadline calendar',        path: '/msbte',        },
+  { icon: GraduationCap, label: 'Scholarships', desc: 'EBC, SC/ST, OBC guides',         path: '/scholarships', },
+  { icon: Briefcase,     label: 'Placement',    desc: 'Resume & interview prep',         path: '/placement',    },
+  { icon: GitBranchIcon, label: 'Open Source',  desc: 'Contribute to real projects',     path: '/opensource',   },
 ]
 
 const stats = [
-  { value: '6',    label: 'Branches covered' },
-  { value: '13+',  label: 'Feature sections' },
-  { value: '100%', label: 'Free forever' },
-  { value: '∞',   label: 'Resources growing' },
+  { value: '6',    label: 'Branches' },
+  { value: '13+',  label: 'Features' },
+  { value: '100%', label: 'Free' },
+  { value: '∞',    label: 'Resources' },
 ]
 
 export default function Home() {
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden" style={{ minHeight: '88vh', display: 'flex', alignItems: 'center' }}>
-        {/* Background grid */}
+    <div style={{ background: 'var(--bg)' }}>
+
+      {/* ── HERO ───────────────────────────────── */}
+      <section style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '0 clamp(1.5rem, 6vw, 7rem)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+
+        {/* subtle top-left noise texture feel via border */}
         <div style={{
-          position: 'absolute', inset: 0, zIndex: 0,
-          backgroundImage: 'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
-          opacity: 0.3
+          position: 'absolute',
+          top: 0, left: 0, right: 0,
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, var(--accent), transparent)',
+          opacity: 0.4,
         }} />
-        {/* Glow */}
+
+        {/* Badge */}
         <div style={{
-          position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
-          width: '600px', height: '300px',
-          background: 'radial-gradient(ellipse, rgba(240,173,52,0.12) 0%, transparent 70%)',
-          zIndex: 0
-        }} />
-
-        <div className="relative max-w-5xl mx-auto px-4 py-20 text-center" style={{ zIndex: 1 }}>
-          {/* Tag */}
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full"
-               style={{ border: '1px solid rgba(240,173,52,0.3)', background: 'rgba(240,173,52,0.08)' }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)', display: 'inline-block' }} />
-            <span className="section-label" style={{ fontSize: '0.65rem' }}>Free & Open Source</span>
-          </div>
-
-          <h1 style={{
-            fontFamily: 'Sora, sans-serif',
-            fontSize: 'clamp(2.2rem, 6vw, 4rem)',
-            fontWeight: 800,
-            lineHeight: 1.15,
-            color: 'var(--text)',
-            marginBottom: '1.5rem',
-            letterSpacing: '-0.02em'
-          }}>
-            Your buddy for all<br />
-            <span style={{ color: 'var(--accent)' }}>3 years of diploma</span>
-          </h1>
-
-          <p style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          marginBottom: '2.5rem',
+          width: 'fit-content',
+        }}>
+          <span style={{
+            width: 6, height: 6,
+            borderRadius: '50%',
+            background: 'var(--accent)',
+            display: 'inline-block',
+            boxShadow: '0 0 6px var(--accent)',
+          }} />
+          <span style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.62rem',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
             color: 'var(--text-muted)',
-            fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)',
-            maxWidth: '520px',
-            margin: '0 auto 2.5rem',
-            lineHeight: 1.7
           }}>
-            PYQs, career guidance, project ideas, college predictor — everything a diploma CS/IT student needs, in one free platform.
-          </p>
+            Free & Open Source — MSBTE K-Scheme
+          </span>
+        </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link to="/resources" className="btn-primary" style={{ fontSize: '0.9rem' }}>
-              Explore Resources <ArrowRight size={16} />
-            </Link>
-            <Link to="/predictor" className="btn-ghost" style={{ fontSize: '0.9rem' }}>
-              College Predictor
-            </Link>
-          </div>
+        {/* Main headline */}
+        <h1 style={{
+          fontFamily: 'var(--font-display)',
+          fontWeight: 700,
+          fontSize: 'clamp(3rem, 8vw, 7rem)',
+          lineHeight: 1.0,
+          letterSpacing: '-0.03em',
+          color: 'var(--text)',
+          marginBottom: '0.15em',
+          maxWidth: '900px',
+        }}>
+          Built for diploma
+        </h1>
 
-          {/* Stats row */}
-          <div className="flex flex-wrap justify-center gap-8 mt-14">
-            {stats.map(s => (
-              <div key={s.label} className="text-center">
-                <div style={{ fontFamily: 'Sora, sans-serif', fontSize: '1.6rem', fontWeight: 700, color: 'var(--accent)' }}>
+        <h1 style={{
+          fontFamily: 'var(--font-display)',
+          fontWeight: 700,
+          fontSize: 'clamp(3rem, 8vw, 7rem)',
+          lineHeight: 1.0,
+          letterSpacing: '-0.03em',
+          color: 'var(--text)',
+          marginBottom: '0.15em',
+          maxWidth: '900px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.3em',
+          flexWrap: 'wrap',
+        }}>
+          students.{' '}
+          <span style={{
+            fontFamily: 'var(--font-serif)',
+            fontStyle: 'italic',
+            fontWeight: 400,
+            color: 'var(--accent)',
+            fontSize: 'clamp(2.5rem, 7vw, 6rem)',
+          }}>
+            By them.
+          </span>
+        </h1>
+
+        {/* Subtext */}
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontWeight: 400,
+          fontSize: 'clamp(0.9rem, 2vw, 1.05rem)',
+          color: 'var(--text-muted)',
+          lineHeight: 1.7,
+          maxWidth: '460px',
+          marginTop: '2rem',
+          marginBottom: '2.5rem',
+        }}>
+          PYQs, career guidance, college predictor, YouTube playlists —
+          everything a diploma CS/IT student needs. One platform. Zero rupees.
+        </p>
+
+        {/* CTAs */}
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '5rem' }}>
+          <Link to="/resources" className="btn-primary">
+            Explore Resources <ArrowRight size={15} />
+          </Link>
+          <Link to="/predictor" className="btn-ghost">
+            College Predictor
+          </Link>
+        </div>
+
+        {/* Stats row */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0',
+          borderTop: '1px solid var(--border)',
+          paddingTop: '2rem',
+          flexWrap: 'wrap',
+        }}>
+          {stats.map((s, i) => (
+            <div key={s.label} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0',
+            }}>
+              <div style={{ paddingRight: '2.5rem' }}>
+                <div style={{
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 700,
+                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                  color: 'var(--text)',
+                  lineHeight: 1,
+                }}>
                   {s.value}
                 </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>{s.label}</div>
+                <div style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.6rem',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: 'var(--text-muted)',
+                  marginTop: '4px',
+                }}>
+                  {s.label}
+                </div>
               </div>
-            ))}
-          </div>
+              {i < stats.length - 1 && (
+                <div style={{
+                  width: '1px',
+                  height: '2rem',
+                  background: 'var(--border)',
+                  marginRight: '2.5rem',
+                }} />
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Features grid */}
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <div className="section-label mb-3 text-center">What's inside</div>
-        <h2 style={{ fontFamily: 'Sora, sans-serif', fontSize: '1.75rem', fontWeight: 700, color: 'var(--text)', textAlign: 'center', marginBottom: '3rem' }}>
-          Everything you need, nothing you don't
-        </h2>
+      {/* ── FEATURES ───────────────────────────── */}
+      <section style={{
+        padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 7rem)',
+        borderTop: '1px solid var(--border)',
+      }}>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '1rem' }}>
-          {features.map(({ icon: Icon, label, desc, path, color }) => (
-            <Link key={path} to={path} className="card p-5 flex flex-col gap-3">
-              <div style={{ width: 38, height: 38, borderRadius: '0.6rem', background: `${color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Icon size={18} color={color} />
-              </div>
+        {/* Section header */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'space-between',
+          marginBottom: '3.5rem',
+          flexWrap: 'wrap',
+          gap: '1rem',
+        }}>
+          <div>
+            <div className="section-label" style={{ marginBottom: '0.75rem' }}>
+              What's inside
+            </div>
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 700,
+              fontSize: 'clamp(1.8rem, 4vw, 3rem)',
+              letterSpacing: '-0.03em',
+              color: 'var(--text)',
+              lineHeight: 1.05,
+              maxWidth: '500px',
+            }}>
+              Everything you need,<br />nothing you don't.
+            </h2>
+          </div>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.875rem',
+            color: 'var(--text-muted)',
+            maxWidth: '280px',
+            lineHeight: 1.7,
+            textAlign: 'right',
+          }}>
+            Curated specifically for MSBTE K-scheme students across 6 branches.
+          </p>
+        </div>
+
+        {/* Features grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+          gap: '1px',
+          border: '1px solid var(--border)',
+          borderRadius: '1rem',
+          overflow: 'hidden',
+          background: 'var(--border)',
+        }}>
+          {features.map(({ icon: Icon, label, desc, path }) => (
+            <Link
+              key={path}
+              to={path}
+              style={{
+                background: 'var(--bg)',
+                padding: '1.75rem 1.5rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.75rem',
+                transition: 'background 0.2s ease',
+                position: 'relative',
+                overflow: 'hidden',
+                textDecoration: 'none',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'var(--surface)'
+                e.currentTarget.querySelector('.feature-arrow').style.opacity = '1'
+                e.currentTarget.querySelector('.feature-arrow').style.transform = 'translateX(0)'
+                e.currentTarget.querySelector('.feature-accent-bar').style.transform = 'scaleY(1)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'var(--bg)'
+                e.currentTarget.querySelector('.feature-arrow').style.opacity = '0'
+                e.currentTarget.querySelector('.feature-arrow').style.transform = 'translateX(-6px)'
+                e.currentTarget.querySelector('.feature-accent-bar').style.transform = 'scaleY(0)'
+              }}
+            >
+              {/* red left border on hover via pseudo — we use a div instead */}
+              <div style={{
+                position: 'absolute',
+                left: 0, top: 0, bottom: 0,
+                width: '2px',
+                background: 'var(--accent)',
+                transform: 'scaleY(0)',
+                transition: 'transform 0.2s ease',
+              }}
+                className="feature-accent-bar"
+              />
+
+              <Icon size={18} color="var(--text-muted)" strokeWidth={1.5} />
+
               <div>
-                <div style={{ fontFamily: 'Sora, sans-serif', fontWeight: 600, fontSize: '0.9rem', color: 'var(--text)', marginBottom: '4px' }}>
+                <div style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontWeight: 800,
+                  fontSize: '0.875rem',
+                  color: 'var(--text)',
+                  marginBottom: '0.3rem',
+                  letterSpacing: '-0.01em',
+                }}>
                   {label}
                 </div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                <div style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.75rem',
+                  color: 'var(--text-muted)',
+                  lineHeight: 1.5,
+                }}>
                   {desc}
                 </div>
               </div>
-              <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 4, fontSize: '0.75rem', color }}>
-                Explore <ArrowRight size={12} />
+
+              <div
+                className="feature-arrow"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.08em',
+                  color: 'var(--accent)',
+                  textTransform: 'uppercase',
+                  opacity: 0,
+                  transform: 'translateX(-6px)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  marginTop: 'auto',
+                }}
+              >
+                Open <ArrowRight size={10} />
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-6xl mx-auto px-4 pb-20">
-        <div className="card p-10 text-center" style={{ background: 'linear-gradient(135deg, rgba(240,173,52,0.08) 0%, rgba(240,173,52,0.03) 100%)' }}>
-          <div className="section-label mb-3">Open Source</div>
-          <h2 style={{ fontFamily: 'Sora, sans-serif', fontSize: '1.5rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.75rem' }}>
-            Built by diploma students, for diploma students
+      {/* ── BOTTOM CTA ─────────────────────────── */}
+      <section style={{
+        padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 7rem)',
+        borderTop: '1px solid var(--border)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '3rem',
+      }}>
+
+        <div style={{ maxWidth: '540px' }}>
+          <div className="section-label" style={{ marginBottom: '0.75rem' }}>
+            Open Source
+          </div>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontWeight: 700,
+            fontSize: 'clamp(1.8rem, 4vw, 3rem)',
+            letterSpacing: '-0.03em',
+            color: 'var(--text)',
+            lineHeight: 1.05,
+            marginBottom: '1.25rem',
+          }}>
+            If it helped you,<br />
+            <span style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              fontWeight: 400,
+              color: 'var(--accent)',
+            }}>
+              pay it forward.
+            </span>
           </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '440px', margin: '0 auto 1.75rem', lineHeight: 1.7 }}>
-            This is an open source project. If it helped you, share it with your classmates — or better, contribute to it.
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.9rem',
+            color: 'var(--text-muted)',
+            lineHeight: 1.7,
+            marginBottom: '2rem',
+            maxWidth: '400px',
+          }}>
+            Diploma Dost is built by students, for students. Share it with your
+            classmates or contribute to it on GitHub.
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a href="https://github.com/piush365/Diploma-Dost" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ fontSize: '0.85rem' }}>
-              <GitBranchIcon size={15} /> View on GitHub
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <a
+              href="https://github.com/piush365/Diploma-Dost"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              <GitBranchIcon size={14} /> View on GitHub
             </a>
-            <Link to="/about" className="btn-ghost" style={{ fontSize: '0.85rem' }}>
-              <User size={15} /> About the project
+            <Link to="/about" className="btn-ghost">
+              About the project
             </Link>
           </div>
         </div>
+
+        {/* Right side — subtle stat block */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          borderLeft: '1px solid var(--border)',
+          paddingLeft: '3rem',
+        }}>
+          {[
+            { value: 'EST. 2024', label: 'Founded' },
+            { value: '6',        label: 'Branches covered' },
+            { value: 'WCE',      label: 'Origin — Sangli' },
+          ].map(s => (
+            <div key={s.label}>
+              <div style={{
+                fontFamily: 'var(--font-display)',
+                fontWeight: 700,
+                fontSize: '1.5rem',
+                color: 'var(--text)',
+                letterSpacing: '-0.02em',
+                lineHeight: 1,
+              }}>
+                {s.value}
+              </div>
+              <div style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.58rem',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: 'var(--text-muted)',
+                marginTop: '4px',
+              }}>
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
       </section>
+
     </div>
   )
 }
