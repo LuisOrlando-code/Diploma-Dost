@@ -1,14 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from '../lib/supabase';
 import {
   MessageSquare, ChevronDown, Send, Plus,
   X, Loader2, User, Clock, ChevronRight
 } from "lucide-react";
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 // ─── constants ─────────────────────────────────────────────────────────────────
 

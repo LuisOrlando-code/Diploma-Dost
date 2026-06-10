@@ -1,14 +1,10 @@
 import { useState, useCallback } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from '../lib/supabase';
 import {
   Search, AlertTriangle, ChevronDown,
   BookmarkPlus, BookmarkCheck, Trash2, Info, X
 } from "lucide-react";
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 // ─── constants ─────────────────────────────────────────────────────────────────
 

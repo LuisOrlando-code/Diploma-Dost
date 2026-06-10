@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from '../lib/supabase';
 import { ExternalLink, PlayCircle, BookOpen, ChevronDown, Loader2 } from "lucide-react";
 import "./YouTube.css";
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 const BRANCHES = ["CS", "IT", "Mech", "Civil", "Elec", "ETC"];
 
