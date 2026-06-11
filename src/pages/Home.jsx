@@ -34,7 +34,7 @@ const highlights = [
   { icon: Zap, title: 'Lightning Fast', desc: 'Optimized for slow connections. Works offline.' },
   { icon: Code, title: 'Open Source', desc: 'Contribute code, content, or ideas on GitHub.' },
   { icon: TrendingUp, title: 'Career Focused', desc: 'From college to campus placement — we cover it all.' },
-  { icon: CheckCircle, title: 'Trusted by 1000s', desc: 'Built by students who got placed. Verified content.' },
+  { icon: CheckCircle, title: 'Trusted by us', desc: 'Built by students who completed their Diploma. Experienced Seniors.' },
 ]
 
 export default function Home() {
