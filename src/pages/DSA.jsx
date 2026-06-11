@@ -554,14 +554,14 @@ export default function DSAPage() {
             {
               title: 'Love Babbar 450 DSA',
               desc: '450 must-do problems for interview prep. Comprehensive and well-organized.',
-              link: 'https://www.codingninjas.com/guided-paths/data-structures-algorithms',
+              link: 'https://codolio.com/question-tracker/sheet/love-babbar-sheet',
               icon: BookOpen,
               highlight: false
             },
             {
               title: 'GFG DSA Self-Paced',
               desc: 'GeeksforGeeks structured DSA course with videos and practice problems.',
-              link: 'https://www.geeksforgeeks.org/dsa-self-paced/',
+              link: 'https://www.geeksforgeeks.org/courses/dsa-self-paced',
               icon: Layers,
               highlight: false
             },
