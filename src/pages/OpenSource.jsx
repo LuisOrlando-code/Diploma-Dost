@@ -1133,7 +1133,7 @@ export default function OpenSourcePage() {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              <GitBranch size={14} /> Browse Issues
+              <FaGithub size={14} /> Browse Issues
             </a>
             <a
               href="https://github.com/piush365/Diploma-Dost"

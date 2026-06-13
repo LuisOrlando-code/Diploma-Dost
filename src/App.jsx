@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 import ErrorBoundary from './components/ErrorBoundary'
 import ScrollToTop from './components/ScrollToTop'
 import { Loader2 } from 'lucide-react'
@@ -52,6 +53,7 @@ export default function App() {
             </Suspense>
           </ErrorBoundary>
         </main>
+        <Footer />
       </div>
     </HashRouter>
   )

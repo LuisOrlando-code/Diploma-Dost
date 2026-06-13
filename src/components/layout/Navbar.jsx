@@ -12,6 +12,7 @@ const navLinks = [
   { label: 'YouTube',     path: '/youtube' },
   { label: 'Internships', path: '/internships' },
   { label: 'Community',   path: '/community' },
+  { label: 'About',       path: '/about' },
 ]
 
 export default function Navbar() {
@@ -41,8 +42,8 @@ export default function Navbar() {
             src={ddLogo}
             alt="Diploma Dost"
             style={{
-              width: '36px',
-              height: '36px',
+              width: '52px',
+              height: '52px',
               borderRadius: '8px',
               objectFit: 'cover',
             }}
@@ -51,7 +52,7 @@ export default function Navbar() {
             <span style={{
               fontFamily: 'var(--font-display)',
               fontWeight: 700,
-              fontSize: '0.95rem',
+              fontSize: '1.2rem',
               color: 'var(--text)',
               letterSpacing: '-0.02em',
             }}>
@@ -59,7 +60,7 @@ export default function Navbar() {
             </span>
             <span style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.5rem',
+              fontSize: '0.9rem',
               letterSpacing: '0.12em',
               color: 'var(--text-muted)',
               textTransform: 'uppercase',
@@ -77,7 +78,7 @@ export default function Navbar() {
               <Link
           key={link.path}
           to={link.path}
-          className={`font-ui text-sm px-3 py-2 rounded-lg transition-colors duration-200 outline-none ${isActive ? 'text-[#e8453c] bg-[#e8453c]/10' : 'text-[#888] hover:text-[#f0ede6] hover:bg-[#1a1a1a]'}`}
+          className={`font-ui text-sm px-2 py-2 rounded-lg transition-colors duration-200 outline-none ${isActive ? 'text-[#e8453c] bg-[#e8453c]/10' : 'text-[#888] hover:text-[#f0ede6] hover:bg-[#1a1a1a]'}`}
           onFocus={e => {
             e.currentTarget.style.boxShadow = '0 0 0 2px var(--accent)'
           }}
