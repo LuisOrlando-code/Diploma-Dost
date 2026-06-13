@@ -4,14 +4,14 @@ import { Menu, X } from 'lucide-react'
 import ddLogo from '../../assets/dd-logo.png'
 
 const navLinks = [
-  { label: 'Resources',   path: '/resources' },
-  { label: 'Roadmaps',    path: '/roadmaps' },
-  { label: 'Predictor',   path: '/predictor' },
-  { label: 'Projects',    path: '/projects' },
-  { label: 'DSA & CP',    path: '/dsa' },
-  { label: 'YouTube',     path: '/youtube' },
+  { label: 'Resources', path: '/resources' },
+  { label: 'Roadmaps', path: '/roadmaps' },
+  { label: 'Predictor', path: '/predictor' },
+  { label: 'Innovation Hub', path: '/innovation-hub' },
+  { label: 'DSA & CP', path: '/dsa' },
+  { label: 'YouTube', path: '/youtube' },
   { label: 'Internships', path: '/internships' },
-  { label: 'Community',   path: '/community' },
+  { label: 'Community', path: '/community' },
 ]
 
 export default function Navbar() {
@@ -28,7 +28,7 @@ export default function Navbar() {
       }}
       className="sticky top-0 z-50"
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
 
         {/* ── Logo ── */}
         <Link
@@ -41,17 +41,17 @@ export default function Navbar() {
             src={ddLogo}
             alt="Diploma Dost"
             style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '8px',
-              objectFit: 'cover',
+              width: '68px',
+              height: '68px',
+              borderRadius: '10px',
+              objectFit: 'contain',
             }}
           />
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
             <span style={{
               fontFamily: 'var(--font-display)',
               fontWeight: 700,
-              fontSize: '0.95rem',
+             fontSize: '1.15rem',
               color: 'var(--text)',
               letterSpacing: '-0.02em',
             }}>
@@ -59,7 +59,7 @@ export default function Navbar() {
             </span>
             <span style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.5rem',
+              fontSize: '0.72rem',
               letterSpacing: '0.12em',
               color: 'var(--text-muted)',
               textTransform: 'uppercase',
@@ -80,10 +80,10 @@ export default function Navbar() {
                 style={{
                   fontFamily: 'var(--font-ui)',
                   fontWeight: isActive ? 800 : 500,
-                  fontSize: '0.875rem',
+                  fontSize: '0.98rem',
                   color: isActive ? 'var(--accent)' : 'var(--text-muted)',
                   background: isActive ? 'rgba(232, 69, 60, 0.08)' : 'transparent',
-                  padding: '0.45rem 0.85rem',
+                  padding: '0.55rem 1rem',
                   borderRadius: '0.5rem',
                   letterSpacing: '-0.01em',
                   transition: 'color 0.2s ease, background 0.2s ease',
@@ -113,7 +113,7 @@ export default function Navbar() {
           <Link
             to="/predictor"
             className="btn-primary"
-            style={{ fontSize: '0.875rem', padding: '0.55rem 1.25rem' }}
+           style={{ fontSize: '0.95rem', padding: '0.7rem 1.4rem' }}
           >
             College Predictor
           </Link>
@@ -153,7 +153,7 @@ export default function Navbar() {
                 style={{
                   fontFamily: 'var(--font-ui)',
                   fontWeight: isActive ? 800 : 500,
-                  fontSize: '0.9rem',
+                  fontSize: '1rem',
                   color: isActive ? 'var(--accent)' : 'var(--text-muted)',
                   background: isActive ? 'rgba(232, 69, 60, 0.08)' : 'transparent',
                   padding: '0.75rem 1rem',

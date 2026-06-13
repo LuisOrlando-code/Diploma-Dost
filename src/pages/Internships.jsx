@@ -512,6 +512,17 @@ export default function InternshipsPage() {
               link: 'https://angel.co/jobs'
             },
             {
+              name: 'Unstop',
+              emoji: '🏆',
+              desc: 'India’s leading platform to discover internships, hackathons, competitions, coding challenges, and career opportunities for students.',
+              pros: [
+                'Hackathons',
+                'Internships',
+                'Competitions'
+              ],
+              link: 'https://unstop.com'
+            },
+            {
               name: 'GitHub Jobs',
               emoji: '💻',
               desc: 'Tech-focused job board. Perfect for developers and tech roles.',
