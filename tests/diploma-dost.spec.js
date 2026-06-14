@@ -65,7 +65,7 @@ test.describe('Navbar', () => {
   });
 
   test('navbar is visible on home page', async ({ page }) => {
-    await expect(page.locator('nav')).toBeVisible();
+    await expect(page.getByRole('navigation').first()).toBeVisible();
   });
 
   test('logo/brand is visible', async ({ page }) => {
