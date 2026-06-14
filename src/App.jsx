@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer'
 import ErrorBoundary from './components/ErrorBoundary'
 import ScrollToTop from './components/ScrollToTop'
 import { Loader2 } from 'lucide-react'
+import SpaceMesh from './components/SpaceMesh'
 
 const Home         = lazy(() => import('./pages/Home'))
 const Resources    = lazy(() => import('./pages/Resources'))
@@ -24,6 +25,7 @@ const About        = lazy(() => import('./pages/About'))
 export default function App() {
   return (
     <HashRouter>
+      <SpaceMesh />
       <div style={{ minHeight: '100vh' }}>
         <ScrollToTop />
         <Navbar />

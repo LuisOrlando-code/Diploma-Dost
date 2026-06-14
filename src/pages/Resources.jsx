@@ -51,7 +51,6 @@ function SessionPill({ session, link }) {
 // ── subject card ───────────────────────────────────────────────────────────────
 
 function SubjectCard({ subjectName, courseCode, entries }) {
-  // group entries by type
   const byType = entries.reduce((acc, e) => {
     if (!acc[e.type]) acc[e.type] = [];
     acc[e.type].push(e);
@@ -80,21 +79,23 @@ function SubjectCard({ subjectName, courseCode, entries }) {
         {Object.entries(byType).map(([type, items]) => {
           const config = TYPE_CONFIG[type] || TYPE_CONFIG.Notes;
           return (
-            <div key={type} className="flex items-center gap-3 flex-wrap">
+            <div key={type} className="flex flex-col gap-2">
               {/* type badge */}
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border text-[0.7rem] font-['JetBrains_Mono'] tracking-wide shrink-0"
+              <span
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border text-[0.7rem] font-['JetBrains_Mono'] tracking-wide self-start"
                 style={{
                   background: `${config.color}15`,
                   color: config.color,
                   borderColor: `${config.color}30`,
-                }}>
+                }}
+              >
                 {config.icon === FileText && <FileText size={11} strokeWidth={2} />}
                 {config.icon === BookOpen && <BookOpen size={11} strokeWidth={2} />}
                 {config.label}
               </span>
 
-              {/* session pills */}
-              <div className="flex flex-nowrap gap-2 overflow-x-auto scrollbar-hide">
+              {/* session pills — wrap naturally, no scrollbar */}
+              <div className="flex flex-wrap gap-2">
                 {items.map((item) => (
                   <SessionPill
                     key={item.id}
@@ -137,7 +138,6 @@ function Dropdown({ value, onChange, options, labelMap, placeholder }) {
 
       {open && (
         <>
-          {/* backdrop */}
           <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
           <div className="absolute top-full left-0 mt-1 z-20
                           border border-[#2a2a2a] rounded-lg bg-[#141414]
@@ -199,7 +199,6 @@ export default function Resources() {
     return () => { cancelled = true; };
   }, [branch, semester, typeFilter]);
 
-  // group rows by subject
   const bySubject = data.reduce((acc, row) => {
     const key = row.course_code;
     if (!acc[key]) acc[key] = { subjectName: row.subject_name, courseCode: row.course_code, entries: [] };
@@ -228,7 +227,7 @@ export default function Resources() {
 
       {/* ── filters ── */}
       <div className="mb-10 pb-6 border-b border-[#2a2a2a]">
-        
+
         {/* branch tabs */}
         <div className="mb-4">
           <p className="font-['JetBrains_Mono'] text-[0.65rem] uppercase tracking-[0.12em] text-[#888] mb-3 font-bold">
@@ -250,8 +249,7 @@ export default function Resources() {
                                   ${branch === b ? "text-[#e8453c]" : "text-[#f0ede6]"}`}>
                   {b}
                 </span>
-                <span className="font-['General_Sans'] text-[0.68rem] text-[#888] whitespace-nowrap
-                                 hidden sm:block">
+                <span className="font-['General_Sans'] text-[0.68rem] text-[#888] whitespace-nowrap hidden sm:block">
                   {BRANCH_LABELS[b]}
                 </span>
               </button>
@@ -318,14 +316,12 @@ export default function Resources() {
 
         {!loading && !error && subjects.length > 0 && (
           <div>
-            {/* result count */}
             <p className="font-['JetBrains_Mono'] text-[0.7rem] text-[#888]
                           tracking-wider uppercase mb-4 font-bold">
               {subjects.length} subject{subjects.length !== 1 ? "s" : ""}
               {typeFilter !== "All" ? ` · ${typeFilter}` : ""}
             </p>
 
-            {/* subject grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {subjects.map((s) => (
                 <SubjectCard
