@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Search } from 'lucide-react'
+import SearchBar from '../SearchBar'
 
 const navLinks = [
   { label: 'Resources',   path: '/resources' },
@@ -16,7 +17,13 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [mobileSearch, setMobileSearch] = useState(false)
   const { pathname } = useLocation()
+
+  useEffect(() => {
+    setOpen(false)
+    setMobileSearch(false)
+  }, [pathname])
 
   return (
     <nav
@@ -75,24 +82,27 @@ export default function Navbar() {
             const isActive = pathname === link.path
             return (
               <Link
-          key={link.path}
-          to={link.path}
-          className={`font-ui text-sm px-2 py-2 rounded-lg transition-colors duration-200 outline-none ${isActive ? 'text-[#e8453c] bg-[#e8453c]/10' : 'text-[#888] hover:text-[#f0ede6] hover:bg-[#1a1a1a]'}`}
-          onFocus={e => {
-            e.currentTarget.style.boxShadow = '0 0 0 2px var(--accent)'
-          }}
-          onBlur={e => {
-            e.currentTarget.style.boxShadow = 'none'
-          }}
-        >
-          {link.label}
-        </Link>
+                key={link.path}
+                to={link.path}
+                className={`font-ui text-sm px-2 py-2 rounded-lg transition-colors duration-200 outline-none ${isActive ? 'text-[#e8453c] bg-[#e8453c]/10' : 'text-[#888] hover:text-[#f0ede6] hover:bg-[#1a1a1a]'}`}
+                onFocus={e => {
+                  e.currentTarget.style.boxShadow = '0 0 0 2px var(--accent)'
+                }}
+                onBlur={e => {
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
+              >
+                {link.label}
+              </Link>
             )
           })}
         </div>
 
-        {/* ── Desktop right: CTA ── */}
+        {/* ── Desktop right: search + CTA ── */}
         <div className="hidden md:flex items-center gap-3">
+          <div className="w-56">
+            <SearchBar onClose={() => {}} />
+          </div>
           <Link
             to="/predictor"
             className="btn-primary text-sm px-4 py-2 outline-none"
@@ -107,8 +117,23 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* ── Mobile right: hamburger ── */}
-        <div className="md:hidden flex items-center">
+        {/* ── Mobile right: search icon + hamburger ── */}
+        <div className="md:hidden flex items-center gap-1">
+          <button
+            className="p-2 rounded-lg text-[#888] hover:text-[#f0ede6] transition-colors duration-200 outline-none"
+            onClick={() => setMobileSearch(v => !v)}
+            aria-label="Search"
+            onFocus={e => {
+              e.currentTarget.style.boxShadow = '0 0 0 2px var(--accent)'
+              e.currentTarget.style.color = 'var(--text)'
+            }}
+            onBlur={e => {
+              e.currentTarget.style.boxShadow = 'none'
+              e.currentTarget.style.color = 'var(--text-muted)'
+            }}
+          >
+            <Search size={20} />
+          </button>
           <button
             className="p-2 rounded-lg text-[#888] hover:text-[#f0ede6] transition-colors duration-200 outline-none"
             onClick={() => setOpen(!open)}
@@ -126,6 +151,16 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* ── Mobile search bar ── */}
+      {mobileSearch && (
+        <div
+          className="md:hidden px-4 pb-3"
+          style={{ borderTop: '1px solid var(--border)' }}
+        >
+          <SearchBar onClose={() => setMobileSearch(false)} />
+        </div>
+      )}
 
       {/* ── Mobile menu ── */}
       {open && (
