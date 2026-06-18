@@ -12,6 +12,7 @@ export default function SearchBar({ onClose }) {
   const [results, setResults] = useState({ resources: [], playlists: [] })
   const [isOpen, setIsOpen] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const inputRef = useRef(null)
   const wrapperRef = useRef(null)
   const navigate = useNavigate()
@@ -20,6 +21,7 @@ export default function SearchBar({ onClose }) {
     let cancelled = false
 
     async function fetchAll() {
+      try {
       const [res, pl] = await Promise.all([
         supabase
           .from('resources')
@@ -30,12 +32,24 @@ export default function SearchBar({ onClose }) {
       ])
 
       if (cancelled) return
+
+      if (res.error || pl.error) {
+        console.error('Supabase fetch error:', res.error || pl.error)
+        setError('Failed to load search data.')
+        return
+      }
+
       setAllData({
         resources: res.data || [],
         playlists: pl.data || [],
       })
-      setLoading(false)
+    } catch (err) {
+      console.error('Search fetch failed:', err)
+      if (!cancelled) setError('Failed to load search data.')
+    } finally {
+        if (!cancelled) setLoading(false)
     }
+  }
 
     fetchAll()
     return () => { cancelled = true }
@@ -117,12 +131,14 @@ export default function SearchBar({ onClose }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search resources, playlists…"
+          aria-label="Search resources and playlists"
           className="bg-transparent border-none outline-none text-[#f0ede6] text-sm font-['General_Sans'] w-full placeholder:text-[#555]"
           onFocus={() => query.trim() && setIsOpen(true)}
         />
         {query && (
           <button
             onClick={() => { setQuery(''); inputRef.current?.focus() }}
+            aria-label="Clear search"
             className="text-[#555] hover:text-[#888] transition-colors"
           >
             <X size={14} />
@@ -138,7 +154,11 @@ export default function SearchBar({ onClose }) {
               Loading data…
             </div>
           )}
-
+          {error && (
+            <div className="px-4 py-6 text-center text-[#e8453c] text-sm font-['General_Sans']">
+              {error}
+            </div>
+          )}
           {noResults && (
             <div className="px-4 py-6 text-center text-[#555] text-sm font-['General_Sans']">
               No results found for &quot;<span className="text-[#888]">{query}</span>&quot;
